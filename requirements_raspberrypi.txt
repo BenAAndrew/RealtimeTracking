@@ -1,0 +1,4 @@
+opencv-contrib-python==4.1.0.25
+imutils==0.5.4
+picamera[array]
+pyserial==3.5
