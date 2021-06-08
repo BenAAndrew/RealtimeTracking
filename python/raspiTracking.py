@@ -1,9 +1,8 @@
 from __future__ import print_function
 from imutils.video.pivideostream import PiVideoStream
-import imutils import resize
 import time
 import cv2
-from utils import get_face_position
+from utils import get_face_position, show_window
 
 faceCascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 vs = PiVideoStream().start()
@@ -15,17 +14,12 @@ start_time = time.time()
 
 while True:
 	frame = vs.read()
-	frame = resize(frame, width=400)
+	face = get_face_position(faceCascade, frame)
 
 	if display:
-		if show_fps:
-			fps = int(frames/(time.time()-start_time))
-			cv2.putText(frame, f"FPS: {fps}", (5,25), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1, cv2.LINE_AA)
-		cv2.imshow("Face", frame)
+		show_window(frame, face, fps=int(frames/(time.time()-start_time)) if show_fps else None)
 		
 	frames += 1
-	print(frame.shape)
-	
 	c = cv2.waitKey(1)
 	# ESC key
 	if c == 27:
