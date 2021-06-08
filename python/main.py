@@ -26,7 +26,7 @@ while True:
             fps=int(frames / (time.time() - start_time)) if args.fps else None,
         )
 
-    if args.serial_port:
+    if args.arduino_port:
         send_position_to_arduino(arduino, face, half_width, half_height)
 
     frames += 1
