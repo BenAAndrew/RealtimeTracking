@@ -20,6 +20,12 @@ def get_arguments():
     parser.add_argument("-d", "--draw_box", type=bool, help="Whether to draw a box around the face", default=True)
     parser.add_argument("-f", "--fps", type=bool, help="Whether to show fps counter", default=False)
     args = parser.parse_args()
+
+    if args.arduino_port and not args.arduino_baudrate:
+        raise ValueError("Arduino baudrate not given")
+    if args.arduino_baudrate and not args.arduino_port:
+        raise ValueError("Arduino port not given")
+
     return args
 
 
