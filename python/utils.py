@@ -15,7 +15,7 @@ def get_face_position(classifier, frame, min_face_size=50, half_width=160, half_
 
 
 def show_window(frame, face=None, fps=None):
-    if face:
+    if face is not None:
         x, y, w, h = face
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
     if fps:
