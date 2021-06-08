@@ -1,9 +1,0 @@
-{
-    "arduino_port": "COM3",
-    "baud_rate": 115200,
-    "haarcascade_path": "haarcascade_frontalface_default.xml",
-    "min_face_scale": 0.3,
-    "preview": true,
-    "draw": true,
-    "show_fps": true
-}
