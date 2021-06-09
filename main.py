@@ -1,4 +1,3 @@
-from imutils.video.pivideostream import PiVideoStream
 import cv2
 import time
 import serial
