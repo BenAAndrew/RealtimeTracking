@@ -25,7 +25,17 @@ def change_position(motor, position):
     else:
         print(f"{position} outside range")
 
-motor = connect_motor(17)
-change_position(motor, 12.5)
-motor.stop()
-GPIO.cleanup()
+ 
+def send_position_to_motors(face, pan, half_width, half_height):
+    x, y, w, h = face
+    centre_x = int(x + w / 2)
+    # centre_y = int(y + h / 2)
+    x_diff = half_width - centre_x
+    # y_diff = half_height - centre_y
+    print(x_diff)
+
+
+# motor = connect_motor(17)
+# change_position(motor, 12.5)
+# motor.stop()
+# GPIO.cleanup()
