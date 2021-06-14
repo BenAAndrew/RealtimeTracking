@@ -27,7 +27,7 @@ try:
         frame = capture.get_frame()
         face = get_face_position(faceCascade, frame, min_face_size, half_width, half_height)
 
-        if args.motor_control:
+        if args.motor_control and face is not None:
             send_position_to_motors(face, pan, half_width, half_height)
 
         if args.preview:
