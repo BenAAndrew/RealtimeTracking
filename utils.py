@@ -4,11 +4,11 @@ import cv2
 
 def get_arguments():
     parser = argparse.ArgumentParser(description="Real time face tracking with pan & tilt control")
-    parser.add_argument("-m", "--capture_method", type=str, help="Capture method", required=True, choices=["webcam", "raspberrypi"])
-    parser.add_argument("-a", "--arduino_port", type=str, help="Port for arduino connection", required=False)
-    parser.add_argument("-b", "--arduino_baudrate", type=str, help="Arduino baudrate", required=False)
     parser.add_argument(
-        "-c",
+        "-c", "--capture_method", type=str, help="Capture method", required=True, choices=["webcam", "raspberrypi"]
+    )
+    parser.add_argument("-m", "--motor_control", type=bool, help="Motor control", default=False)
+    parser.add_argument(
         "--haarcascade_path",
         type=str,
         help="Path to Haar cascade classifier file",
@@ -21,11 +21,6 @@ def get_arguments():
     parser.add_argument("--draw_box", type=bool, help="Whether to draw a box around the face", default=True)
     parser.add_argument("--fps", type=bool, help="Whether to show fps counter", default=False)
     args = parser.parse_args()
-
-    if args.arduino_port and not args.arduino_baudrate:
-        raise ValueError("Arduino baudrate not given")
-    if args.arduino_baudrate and not args.arduino_port:
-        raise ValueError("Arduino port not given")
 
     return args
 
@@ -56,14 +51,3 @@ def show_window(frame, face=None, fps=None):
     if fps:
         cv2.putText(frame, f"FPS: {fps}", (5, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1, cv2.LINE_AA)
     cv2.imshow("Face", frame)
-
-
-def send_position_to_arduino(arduino, face, half_width, half_height):
-    x, y, w, h = face
-    centre_x = int(x + w / 2)
-    centre_y = int(y + h / 2)
-    x_diff = half_width - centre_x
-    y_diff = half_height - centre_y
-    message = f"{x_diff},{y_diff}\n"
-    print(message[:-1])
-    arduino.write(bytes(message, 'utf-8'))
