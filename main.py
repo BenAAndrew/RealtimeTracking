@@ -14,7 +14,7 @@ capture = init_capture_method(args.capture_method)
 min_face_size, half_width, half_height = get_dimensions(capture.get_frame(), args.min_face_scale)
 
 if args.motor_control:
-    from motor_control import send_position_to_motors
+    from motor_control import Motor, send_position_to_motors
     import pigpio
 
     pi = pigpio.pi()

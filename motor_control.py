@@ -16,7 +16,7 @@ class Motor:
         new_position = self.position + change
         if new_position >= MIN_VALUE and new_position <= MAX_VALUE:
             self.position = new_position
-            pi.set_servo_pulsewidth(self.motor_pin, self.position)
+            pi.set_servo_pulsewidth(self.pin, self.position)
         else:
             print(f"{new_position} outside range")
 
