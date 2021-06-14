@@ -1,4 +1,4 @@
 opencv-contrib-python==4.1.0.25
-RPi.GPIO==0.7.0
+pigpio==1.78
 imutils==0.5.4
 picamera[array]
