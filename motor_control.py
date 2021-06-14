@@ -13,8 +13,6 @@ def connect_motor(pin):
     GPIO.setup(pin, GPIO.OUT)
     p = GPIO.PWM(pin, REFRESH_RATE)
     p.start(MIN_VALUE)
-    p.ChangeDutyCycle(MIN_VALUE)
-    time.sleep(0.5)
     return p
 
 
