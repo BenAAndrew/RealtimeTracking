@@ -25,7 +25,7 @@ def change_position(motor, position):
     else:
         print(f"{position} outside range")
 
- 
+
 def send_position_to_motors(face, pan, half_width, half_height):
     x, y, w, h = face
     centre_x = int(x + w / 2)

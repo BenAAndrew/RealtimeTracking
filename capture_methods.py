@@ -30,6 +30,7 @@ class Webcam(CaptureMethod):
 class RaspberryPi(CaptureMethod):
     def __init__(self):
         from imutils.video.pivideostream import PiVideoStream
+
         self.vs = PiVideoStream().start()
         time.sleep(2)
 
@@ -46,4 +47,4 @@ def init_capture_method(capture_method):
     elif capture_method == "raspberrypi":
         return RaspberryPi()
     else:
-        raise AttributeError("Invalid capture method. Must be on of: "+(', ').join(["webcam", "raspberrypi"]))
+        raise AttributeError("Invalid capture method. Must be on of: " + (", ").join(["webcam", "raspberrypi"]))
