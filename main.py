@@ -1,9 +1,7 @@
 import cv2
-import RPi.GPIO as GPIO
 import time
 from capture_methods import init_capture_method
-from motor_control import connect_motor, send_position_to_motors
-from utils import get_arguments, get_dimensions, get_face_position, show_window, send_position_to_arduino
+from utils import get_arguments, get_dimensions, get_face_position, show_window
 
 
 FPS_SAMPLE = 10
@@ -17,6 +15,7 @@ capture = init_capture_method(args.capture_method)
 min_face_size, half_width, half_height = get_dimensions(capture.get_frame(), args.min_face_scale)
 
 if args.motor_control:
+    from motor_control import connect_motor, send_position_to_motors
     pan = connect_motor(PAN_MOTOR_PIN)
 
 frames = 0
@@ -53,5 +52,6 @@ capture.close()
 cv2.destroyAllWindows()
 
 if args.motor_control:
+    import RPi.GPIO as GPIO
     pan.stop()
     GPIO.cleanup()
