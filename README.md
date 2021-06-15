@@ -33,5 +33,9 @@ Please note: Motor interaction is not enabled for PC
 You can add these arguments onto the `main.py` (i.e. `python3 main.py -c rasperrypi --fps 1`)
 
 ## Motor control setup
-1. Connect servos to GPIO 17 & GPIO 27
+1. Connect servos to Raspberry pi
+- Connect red wires to 5V pins (2 in the top left). Ensure your servos are 5V before doing so
+- Connect black wires to ground (3rd pin on the top and 5th pin on the bottom)
+- Connect yellow wires to GPIO pins (pan to GPIO 17/6th pin on the bottom and tilt to GPIO 27/7th on the bottom)
+![Wiring](wiring.png "Wiring")
 2. Add `-m 1` to the `main.py` command (i.e. `python3 main.py -c rasperrypi -m 1`)
