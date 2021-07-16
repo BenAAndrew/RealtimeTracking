@@ -1,6 +1,6 @@
 # RealtimeTracking
 
-Real time face tracking for Webcam/Raspberry Pi with feedback support pan & tilt control motor control
+Real time face tracking for Webcam/Raspberry Pi with feedback support for pan & tilt motor control
 
 ## Face tracking setup
 
